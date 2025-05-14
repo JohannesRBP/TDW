@@ -236,15 +236,6 @@ function renderizarContenido() {
   }
 }
 
-function inicializarApp() {
-  const rutaActual = obtenerRutaActual();
-  if (rutaActual.includes("index.html")) {
-    inicializarLogin();
-  } else if (rutaActual.includes("reader.html") || rutaActual.includes("writer.html")) {
-    inicializarLogout();
-  }
-  renderizarContenido();
-}
 
 window.addEventListener("DOMContentLoaded", inicializarApp);
 
