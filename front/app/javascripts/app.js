@@ -19,9 +19,9 @@ function inicializarLogin() {
     if (usuarioLogueado) {
       localStorage.setItem("currentUser", JSON.stringify(usuarioLogueado));
       if (usuarioLogueado.role === "reader") {
-        window.location.href = "/app/views/personas/reader.html";
+        window.location.href = "/front/app/views/personas/reader.html";
       } else if (usuarioLogueado.role === "writer") {
-        window.location.href = "/app/views/personas/writer.html";
+        window.location.href = "/front/app/views/personas/writer.html";
       }
     } else {
       alert("Usuario o contraseña incorrectos.");
@@ -41,7 +41,7 @@ function inicializarLogout() {
   if (botonLogout) {
     botonLogout.addEventListener("click", () => {
       localStorage.removeItem("currentUser");
-      window.location.href = "/app/views/home/index.html";
+      window.location.href = "/front/app/views/home/index.html";
     });
   }
 }
