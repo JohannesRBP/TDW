@@ -1,50 +1,37 @@
-function obtenerRutaActual() {
-  return window.location.pathname;
-}
+import { createUser } from "./api.js";
 
-function obtenerUsuarioActual() {
-  return JSON.parse(localStorage.getItem("currentUser"));
-}
-
-// LOGIN / LOGOUT
-
-function inicializarLogin() {
-  const formulario = document.querySelector("form");
+function inicializarRegistro() {
+  const formulario = document.getElementById("form-login");
   if (!formulario) return;
-  formulario.addEventListener("submit", (evento) => {
-    evento.preventDefault();
-    const usuario = document.getElementById("user-name").value;
-    const contrasena = document.getElementById("pwd").value;
-    const usuarioLogueado = realizarLogin(usuario, contrasena);
-    if (usuarioLogueado) {
-      localStorage.setItem("currentUser", JSON.stringify(usuarioLogueado));
-      if (usuarioLogueado.role === "reader") {
-        window.location.href = "/front/app/views/personas/reader.html";
-      } else if (usuarioLogueado.role === "writer") {
-        window.location.href = "/front/app/views/personas/writer.html";
-      }
-    } else {
-      alert("Usuario o contraseña incorrectos.");
+
+  formulario.addEventListener("submit", async (e) => {
+    e.preventDefault(); // Esto debería prevenir el GET tradicional
+    
+    const username = formulario["user-name"].value;
+    const password = formulario["pwd"].value;
+
+    try {
+      const nuevo = await createUser({ username, password });
+      alert(`Usuario creado: ${nuevo.username} (ID ${nuevo.id})`);
+    } catch (err) {
+      alert("Error creando usuario: " + err.message);
     }
   });
 }
-
-function realizarLogin(usuario, contrasena) {
-  const usuarioEncontrado = datosLogin.usuarios.find(
-    (u) => u.username === usuario && u.password === contrasena
-  );
-  return usuarioEncontrado || null;
-}
-
-function inicializarLogout() {
-  const botonLogout = document.getElementById("logout-btn");
-  if (botonLogout) {
-    botonLogout.addEventListener("click", () => {
-      localStorage.removeItem("currentUser");
-      window.location.href = "/front/app/views/home/index.html";
-    });
+function inicializarApp() {
+  // Si hay un formulario de registro/login en la página...
+  if (document.getElementById("form-login")) {
+    inicializarRegistro();
+  } else {
+    inicializarLogout();
+    renderizarContenido();
   }
 }
+
+window.addEventListener("DOMContentLoaded", inicializarApp);
+
+
+
 
 // CARGAR SECCIÓN
 
