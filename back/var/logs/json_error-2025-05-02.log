@@ -1,0 +1,24 @@
+[2025-05-02T16:33:45.502035+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-02T16:34:09.908644+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []

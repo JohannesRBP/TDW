@@ -1,0 +1,109 @@
+/* CARDS GENERALES */
+.card {
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin: 15px auto;
+    width: 320px; 
+    height: auto;
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.card ul {
+    list-style-type: none;
+    padding-left: 0;
+    color: #333; 
+    font-size: 14px;
+    margin: 5px 0;
+    
+}
+
+.card:hover {
+    transform: scale(1.05); 
+}
+
+.card img {
+    width: 60%; 
+    height: auto; 
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: black;
+    font-size: 1.1em;
+    margin: 8px 0;
+}
+
+/* TARJETAS DE PERSONAJES */
+.personajes .card {
+    background-color: #e6f7ff; 
+    border-top: 6px solid #0066cc; 
+}
+
+.personajes .card h3 {
+    color: #004080; 
+}
+
+.personajes .card img {
+    width: 100%; 
+    height: auto;
+    object-fit: contain;
+}
+
+.personajes .card p {
+    color: #333; 
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* TARJETAS DE ENTIDADES */
+.entidades .card {
+    background-color: #eaf6ea; 
+    border-top: 6px solid #28a745; 
+}
+
+.entidades .card h3 {
+    color: #1b5e20; 
+}
+
+.entidades .card img {
+    width: 60%; 
+    height: auto; 
+    object-fit: contain; 
+}
+.entidades .card p{
+    color: #333; 
+    font-size: 14px;
+    margin: 5px 0;
+
+}
+
+/* TARJETAS DE PRODUCTOS */
+.productos .card {
+    background-color: #fef6e6;
+    border-top: 6px solid #e67e22; 
+}
+
+.productos .card h3 {
+    color: #d35400; 
+}
+
+.productos .card img {
+    width: 70%; 
+    height: auto;
+    object-fit: contain;
+}
+.productos .card p {
+    color: #333; 
+    font-size: 14px;
+    margin: 5px 0;
+}
+

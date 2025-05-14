@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anales de la Ciencia</title>
+  <link rel="stylesheet" href= "/app/assets/stylesheets/home.css">
+  <link rel="stylesheet" href="/app/assets/stylesheets/personajes.css">
+
+</head>
+<body>
+  <!-------------------- BARRA DE NAVEGACIÓN ----------------------------------->
+  <nav>
+    <h1>ANALES DE LA CIENCIA</h1>
+    <ul>
+      <li><a href="/app/views/home/index.html">Inicio</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <!------- LOGIN -------->
+    <section class="login-form" id="login-form">
+      <h1>Login Here</h1>
+      <form>
+        <label for="user-name">Usuario</label>
+        <input type="text" id="user-name" name="user-name">
+
+        <label for="pwd">Contraseña</label>
+        <input type="password" id="pwd" name="pwd">
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+    
+   <div class="objetos">
+        <!------- PERSONAJES -------->
+        <div class="personajes" id="personajes">
+
+        </div>
+        
+        <!------- ENTIDADES -------->
+        <div class="entidades" id="entidades">
+      
+        </div>
+    
+        <!------- PRODUCTOS -------->
+        <div class="productos" id="productos">
+         
+        </div>
+      
+   </div>
+
+  </main>
+
+  <script src="/app/javascripts/data.js"></script>
+  <script src="/app/javascripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+[2025-05-09T13:09:11.793787+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T13:10:53.070390+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T13:11:28.649448+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T14:25:21.964280+02:00] json_error_renderer.ERROR: 
+[405] Method not allowed. Must be one of: OPTIONS in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 79.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T14:26:29.018615+02:00] json_error_renderer.ERROR: 
+[405] Method not allowed. Must be one of: OPTIONS in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 79.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T14:27:22.390611+02:00] json_error_renderer.ERROR: 
+[405] Method not allowed. Must be one of: OPTIONS in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 79.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T14:58:18.795605+02:00] json_error_renderer.ERROR: 
+[405] Method not allowed. Must be one of: OPTIONS in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 79.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T15:23:59.206915+02:00] json_error_renderer.ERROR: 
+[405] Method not allowed. Must be one of: OPTIONS in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 79.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#7 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-05-09T15:32:39.166022+02:00] json_error_renderer.ERROR: 
+[0] TDW\ACiencia\Controller\Entity\EntityRelationsController:operationAssociation is not resolvable in /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/CallableResolver.php on line 165.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/CallableResolver.php(103): Slim\CallableResolver->assertCallable()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/CallableResolver.php(70): Slim\CallableResolver->resolveByPredicate()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(345): Slim\CallableResolver->resolveRoute()
+#3 /home/macumba/php/apiAnalesCiencia/src/Middleware/JwtMiddleware.php(72): Slim\Routing\Route->handle()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\JwtMiddleware->process()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Slim\MiddlewareDispatcher->handle()
+#7 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(321): Slim\MiddlewareDispatcher->handle()
+#8 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/RouteRunner.php(74): Slim\Routing\Route->run()
+#9 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/BodyParsingMiddleware.php(65): Slim\Routing\RouteRunner->handle()
+#10 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\BodyParsingMiddleware->process()
+#11 /home/macumba/php/apiAnalesCiencia/src/Middleware/CorsMiddleware.php(35): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#12 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\CorsMiddleware->process()
+#13 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(45): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#14 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#15 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#16 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#17 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#18 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#19 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#20 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#21 {main} [] []
+[2025-05-09T15:46:08.964730+02:00] json_error_renderer.ERROR: 
+[0] Class 'TDW\ACiencia\Controller\Entity\Association' does not exist in /home/macumba/php/apiAnalesCiencia/vendor/doctrine/persistence/src/Persistence/Mapping/MappingException.php on line 72.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/persistence/src/Persistence/Mapping/RuntimeReflectionService.php(38): Doctrine\Persistence\Mapping\MappingException::nonExistingClass()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/persistence/src/Persistence/Mapping/AbstractClassMetadataFactory.php(258): Doctrine\Persistence\Mapping\RuntimeReflectionService->getParentClasses()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/persistence/src/Persistence/Mapping/AbstractClassMetadataFactory.php(293): Doctrine\Persistence\Mapping\AbstractClassMetadataFactory->getParentClasses()
+#3 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/persistence/src/Persistence/Mapping/AbstractClassMetadataFactory.php(187): Doctrine\Persistence\Mapping\AbstractClassMetadataFactory->loadMetadata()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/orm/src/EntityManager.php(220): Doctrine\Persistence\Mapping\AbstractClassMetadataFactory->getMetadataFor()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/orm/src/Repository/DefaultRepositoryFactory.php(28): Doctrine\ORM\EntityManager->getClassMetadata()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/doctrine/orm/src/EntityManager.php(495): Doctrine\ORM\Repository\DefaultRepositoryFactory->getRepository()
+#7 /home/macumba/php/apiAnalesCiencia/src/Controller/Element/ElementRelationsBaseController.php(120): Doctrine\ORM\EntityManager->getRepository()
+#8 /home/macumba/php/apiAnalesCiencia/src/Controller/Entity/EntityRelationsController.php(186): TDW\ACiencia\Controller\Element\ElementRelationsBaseController->operationRelatedElements()
+#9 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(38): TDW\ACiencia\Controller\Entity\EntityRelationsController->operationAssociation()
+#10 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(363): Slim\Handlers\Strategies\RequestResponse->__invoke()
+#11 /home/macumba/php/apiAnalesCiencia/src/Middleware/JwtMiddleware.php(72): Slim\Routing\Route->handle()
+#12 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\JwtMiddleware->process()
+#13 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#14 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Slim\MiddlewareDispatcher->handle()
+#15 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(321): Slim\MiddlewareDispatcher->handle()
+#16 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/RouteRunner.php(74): Slim\Routing\Route->run()
+#17 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/BodyParsingMiddleware.php(65): Slim\Routing\RouteRunner->handle()
+#18 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\BodyParsingMiddleware->process()
+#19 /home/macumba/php/apiAnalesCiencia/src/Middleware/CorsMiddleware.php(35): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#20 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\CorsMiddleware->process()
+#21 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(45): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#22 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#23 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#24 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#25 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#26 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#27 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#28 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#29 {main} [] []
+[2025-05-09T15:55:47.165268+02:00] json_error_renderer.ERROR: 
+[0] Faltan parámetros obligatorios: name y websiteUrl. in /home/macumba/php/apiAnalesCiencia/src/Controller/Association/AssociationCommandController.php on line 50.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/src/Controller/Element/ElementBaseCommandController.php(101): TDW\ACiencia\Controller\Association\AssociationCommandController->createElementFromData()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(38): TDW\ACiencia\Controller\Element\ElementBaseCommandController->post()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(363): Slim\Handlers\Strategies\RequestResponse->__invoke()
+#3 /home/macumba/php/apiAnalesCiencia/src/Middleware/JwtMiddleware.php(72): Slim\Routing\Route->handle()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\JwtMiddleware->process()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Slim\MiddlewareDispatcher->handle()
+#7 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(321): Slim\MiddlewareDispatcher->handle()
+#8 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/RouteRunner.php(74): Slim\Routing\Route->run()
+#9 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/BodyParsingMiddleware.php(65): Slim\Routing\RouteRunner->handle()
+#10 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\BodyParsingMiddleware->process()
+#11 /home/macumba/php/apiAnalesCiencia/src/Middleware/CorsMiddleware.php(35): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#12 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\CorsMiddleware->process()
+#13 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(45): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#14 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#15 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#16 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#17 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#18 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#19 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#20 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#21 {main} [] []
+[2025-05-09T15:57:59.688537+02:00] json_error_renderer.ERROR: 
+[0] Faltan parámetros obligatorios: name y websiteUrl. in /home/macumba/php/apiAnalesCiencia/src/Controller/Association/AssociationCommandController.php on line 50.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/src/Controller/Element/ElementBaseCommandController.php(101): TDW\ACiencia\Controller\Association\AssociationCommandController->createElementFromData()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(38): TDW\ACiencia\Controller\Element\ElementBaseCommandController->post()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(363): Slim\Handlers\Strategies\RequestResponse->__invoke()
+#3 /home/macumba/php/apiAnalesCiencia/src/Middleware/JwtMiddleware.php(72): Slim\Routing\Route->handle()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\JwtMiddleware->process()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Slim\MiddlewareDispatcher->handle()
+#7 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(321): Slim\MiddlewareDispatcher->handle()
+#8 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/RouteRunner.php(74): Slim\Routing\Route->run()
+#9 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/BodyParsingMiddleware.php(65): Slim\Routing\RouteRunner->handle()
+#10 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\BodyParsingMiddleware->process()
+#11 /home/macumba/php/apiAnalesCiencia/src/Middleware/CorsMiddleware.php(35): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#12 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\CorsMiddleware->process()
+#13 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(45): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#14 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#15 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#16 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#17 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#18 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#19 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#20 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#21 {main} [] []
+[2025-05-09T18:07:36.918168+02:00] json_error_renderer.ERROR: 
+[0] Faltan parámetros obligatorios: name y websiteUrl. in /home/macumba/php/apiAnalesCiencia/src/Controller/Association/AssociationCommandController.php on line 50.
+Backtrace:
+#0 /home/macumba/php/apiAnalesCiencia/src/Controller/Element/ElementBaseCommandController.php(101): TDW\ACiencia\Controller\Association\AssociationCommandController->createElementFromData()
+#1 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(38): TDW\ACiencia\Controller\Element\ElementBaseCommandController->post()
+#2 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(363): Slim\Handlers\Strategies\RequestResponse->__invoke()
+#3 /home/macumba/php/apiAnalesCiencia/src/Middleware/JwtMiddleware.php(72): Slim\Routing\Route->handle()
+#4 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\JwtMiddleware->process()
+#5 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#6 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Slim\MiddlewareDispatcher->handle()
+#7 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/Route.php(321): Slim\MiddlewareDispatcher->handle()
+#8 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Routing/RouteRunner.php(74): Slim\Routing\Route->run()
+#9 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/BodyParsingMiddleware.php(65): Slim\Routing\RouteRunner->handle()
+#10 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\BodyParsingMiddleware->process()
+#11 /home/macumba/php/apiAnalesCiencia/src/Middleware/CorsMiddleware.php(35): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#12 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(177): TDW\ACiencia\Middleware\CorsMiddleware->process()
+#13 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(45): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#14 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process()
+#15 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#16 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process()
+#17 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle()
+#18 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle()
+#19 /home/macumba/php/apiAnalesCiencia/vendor/slim/slim/Slim/App.php(193): Slim\App->handle()
+#20 /home/macumba/php/apiAnalesCiencia/public/index.php(19): Slim\App->run()
+#21 {main} [] []

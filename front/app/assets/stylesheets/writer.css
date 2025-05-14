@@ -1,0 +1,91 @@
+.modal-formulario {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  width: 400px;
+  border-radius: 10px;
+}
+
+
+.modal-formulario form input {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-formulario form button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #006633;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.modal-formulario form button:hover {
+  background-color: #004d26;
+}
+
+.boton-crud {
+  padding: 10px 20px;
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.boton-crud:hover {
+  background-color: #005599;
+}
+
+.boton-eliminar {
+  padding: 5px 15px;
+  background-color: #cc0000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  margin-top: 5px;
+}
+
+.boton-eliminar:hover {
+  background-color: #aa0000;
+}
+
+.boton-editar {
+  padding: 5px 15px;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+  margin-left: 8px;
+}
+
+.boton-editar:hover {
+  background-color: #005fa3;
+}
+
+.botones-crud {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+}

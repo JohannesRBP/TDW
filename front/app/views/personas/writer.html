@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anales de la Ciencia - Writer</title>
+  <link rel="stylesheet" href="/app/assets/stylesheets/home.css">
+  <link rel="stylesheet" href="/app/assets/stylesheets/personajes.css">
+  <link rel="stylesheet" href="/app/assets/stylesheets/writer.css">
+</head>
+<body>
+
+  <nav>
+    <h1>ANALES DE LA CIENCIA</h1>
+    <ul>
+      <li><a href="#personajes">Inicio</a></li>
+      <li><button id="logout-btn">Logout</button></li>
+    </ul>
+  </nav>
+  
+  <main style="margin-top: 80px;">
+    <div class="botones-crud">
+      <button class="boton-crud" onclick="crearPersonaje()">Crear Personaje</button>
+      <button class="boton-crud" onclick="crearEntidad()">Crear Entidad</button>
+      <button class="boton-crud" onclick="crearProducto()">Crear Producto</button>
+    </div>
+    <div class="objetos">
+      <div class="personajes" id="personajes"></div>
+      <div class="entidades" id="entidades"></div>
+      <div class="productos" id="productos"></div>
+    </div>
+  </main>
+
+  <script src="/app/javascripts/data.js"></script>
+  <script src="/app/javascripts/app.js"></script>
+</body>
+</html>
