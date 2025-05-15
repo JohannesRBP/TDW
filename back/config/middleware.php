@@ -9,12 +9,14 @@ use TDW\ACiencia\Middleware\CorsMiddleware;
 
 return function (App $app) {
 
+    // Middleware CORS
     $app->add(function ($request, $handler) {
         $response = $handler->handle($request);
 
         $origin = $request->getHeaderLine('Origin');
+        $allowedOrigins = ['http://localhost:63342']; // Puedes añadir más orígenes si es necesario
 
-        if ($origin) {
+        if (in_array($origin, $allowedOrigins)) {
             $response = $response->withHeader('Access-Control-Allow-Origin', $origin);
         }
 
@@ -22,6 +24,11 @@ return function (App $app) {
             ->withHeader('Access-Control-Allow-Credentials', 'true')
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    });
+
+    // Permitir peticiones OPTIONS (preflight)
+    $app->options('/{routes:.+}', function ($request, $response, $args) {
+        return $response;
     });
 
 
