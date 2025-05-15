@@ -5,21 +5,23 @@ function inicializarRegistro() {
   if (!formulario) return;
 
   formulario.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Esto debería prevenir el GET tradicional
-    
+    e.preventDefault();
+
+
     const username = formulario["user-name"].value;
     const password = formulario["pwd"].value;
 
     try {
-      const nuevo = await createUser({ username, password });
-      alert(`Usuario creado: ${nuevo.username} (ID ${nuevo.id})`);
+      // Llamada a la API para crear el usuario
+      const nuevoUsuario = await createUser({ username, password });
+      alert(`Usuario creado: ${nuevoUsuario.username} (ID ${nuevoUsuario.id})`);
     } catch (err) {
       alert("Error creando usuario: " + err.message);
     }
   });
 }
+
 function inicializarApp() {
-  // Si hay un formulario de registro/login en la página...
   if (document.getElementById("form-login")) {
     inicializarRegistro();
   } else {
@@ -29,7 +31,6 @@ function inicializarApp() {
 }
 
 window.addEventListener("DOMContentLoaded", inicializarApp);
-
 
 
 
