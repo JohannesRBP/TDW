@@ -59,6 +59,7 @@ export const getUsers    = () => apiRequest("/users");
 export const createUser  = (obj) => apiRequest("/users", "POST", obj);
 export const updateUser  = (id, obj) => apiRequest(`/users/${id}`, "PUT", obj);
 export const deleteUser  = (id) => apiRequest(`/users/${id}`, "DELETE");
+export const getUserByName  = (username) => apiRequest(`/users/username/${username}`);
 
 // ===========================================================
 // ENDPOINTS DE GESTIÓN DE PERSONAJES

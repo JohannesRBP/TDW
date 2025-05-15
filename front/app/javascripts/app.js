@@ -1,4 +1,4 @@
-import { createUser } from "./api.js";
+import {createUser, getUserByName} from "./api.js";
 
 function inicializarRegistro() {
   const formulario = document.getElementById("form-login");
@@ -7,19 +7,61 @@ function inicializarRegistro() {
   formulario.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-
     const username = formulario["user-name"].value;
     const password = formulario["pwd"].value;
 
     try {
-      // Llamada a la API para crear el usuario
-      const nuevoUsuario = await createUser({ username, password });
-      alert(`Usuario creado: ${nuevoUsuario.username} (ID ${nuevoUsuario.id})`);
+      // Comprobar si el usuario existe (204 esperado si existe)
+      await getUserByName(username);
+      alert("Usuario existe. Procediendo con el login...");
+      // Aquí puedes continuar con el login real
+    } catch (err) {
+      if (err.message.includes("404")) {
+        // Usuario no existe → mostrar formulario adicional
+        mostrarFormularioEmail(username, password);
+      } else {
+        alert("Error al verificar usuario: " + err.message);
+      }
+    }
+  });
+
+}
+
+
+
+function mostrarFormularioEmail(username, password) {
+  const formContainer = document.getElementById("form-login");
+  formContainer.innerHTML = `
+    <h2>Registro de nuevo usuario</h2>
+    <label for="user-name">Usuario</label>
+    <input type="text" id="user-name" name="user-name" value="${username}" required>
+    <label for="pwd">Contraseña</label>
+    <input type="password" id="pwd" name="pwd" value="${password}" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Registrarse</button>
+  `;
+
+  formContainer.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = formContainer["email"].value;
+    const nuevoUsuario = {
+      username: formContainer["user-name"].value,
+      password: formContainer["pwd"].value,
+      email: email,
+    };
+
+    try {
+      const user = await createUser(nuevoUsuario);
+      alert(`Usuario creado: ${user.username} (ID ${user.id})`);
     } catch (err) {
       alert("Error creando usuario: " + err.message);
     }
   });
 }
+
+
+
 
 function inicializarApp() {
   if (document.getElementById("form-login")) {
