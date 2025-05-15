@@ -8,13 +8,29 @@ use TDW\ACiencia\Handler\{ HtmlErrorRenderer, JsonErrorRenderer };
 use TDW\ACiencia\Middleware\CorsMiddleware;
 
 return function (App $app) {
+
+    $app->add(function ($request, $handler) {
+        $response = $handler->handle($request);
+
+        $origin = $request->getHeaderLine('Origin');
+
+        if ($origin) {
+            $response = $response->withHeader('Access-Control-Allow-Origin', $origin);
+        }
+
+        return $response
+            ->withHeader('Access-Control-Allow-Credentials', 'true')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    });
+
+
     /** @var ContainerInterface $container */
     $container = $app->getContainer();
 
     // Parse json, form data and xml
     $app->addBodyParsingMiddleware();
 
-    $app->add(CorsMiddleware::class);
 
     $app->addRoutingMiddleware();
     // $app->add(BasePathMiddleware::class);
