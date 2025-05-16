@@ -5,51 +5,76 @@ use Selective\Config\Configuration;
 use Slim\App;
 use Slim\Handlers\ErrorHandler;
 use TDW\ACiencia\Handler\{ HtmlErrorRenderer, JsonErrorRenderer };
-use TDW\ACiencia\Middleware\CorsMiddleware;
 
 return function (App $app) {
-
-    // Middleware CORS
+    // ===========================================================
+    // 1. MIDDLEWARE CORS (PRIMERA CAPA - SE EJECUTA EN TODAS LAS PETICIONES)
+    // ===========================================================
     $app->add(function ($request, $handler) {
-        $response = $handler->handle($request);
-
+        // Orígenes permitidos (ajusta a tus necesidades)
+        $allowedOrigins = [
+            'http://localhost:5500',      // Frontend local
+            'http://127.0.0.1:5500',       // Alternativa IPv4
+            'http://[::1]:5500'           // Alternativa IPv6
+        ];
+        
+        // Obtener origen de la solicitud
         $origin = $request->getHeaderLine('Origin');
-        $allowedOrigins = ['http://localhost:63342']; // Puedes añadir más orígenes si es necesario
+        
+        // Determinar origen permitido (sin usar wildcard '*' si hay credenciales)
+        $allowOrigin = in_array($origin, $allowedOrigins) 
+            ? $origin 
+            : $allowedOrigins[0]; // Opción: rechazar peticiones no listadas
 
-        if (in_array($origin, $allowedOrigins)) {
-            $response = $response->withHeader('Access-Control-Allow-Origin', $origin);
-        }
-
+        // Manejar la solicitud y modificar la respuesta
+        $response = $handler->handle($request);
+        
+        // Añadir cabeceras CORS a TODAS las respuestas
         return $response
+            ->withHeader('Access-Control-Allow-Origin', $allowOrigin)
             ->withHeader('Access-Control-Allow-Credentials', 'true')
-            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+            ->withHeader(
+                'Access-Control-Allow-Headers',
+                'Content-Type, Accept, Origin, Authorization, X-Requested-With'
+            )
+            ->withHeader(
+                'Access-Control-Allow-Methods',
+                'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+            );
     });
 
-    // Permitir peticiones OPTIONS (preflight)
+    // ===========================================================
+    // 2. RUTA PREFLIGHT OPTIONS (PARA SOLICITUDES CORS COMPLEJAS)
+    // ===========================================================
     $app->options('/{routes:.+}', function ($request, $response, $args) {
+        // Respuesta vacía con código 200 y cabeceras CORS
+        // ¡Las cabeceras ya fueron añadidas por el middleware anterior!
         return $response;
     });
 
+    // ===========================================================
+    // 3. MIDDLEWARES DE SLIM (PROCESAMIENTO DEL CUERPO DE PETICIONES)
+    // ===========================================================
+    $app->addBodyParsingMiddleware();  // Parsea JSON, XML, form-data
+    $app->addRoutingMiddleware();      // Habilita el sistema de rutas
 
+    // ===========================================================
+    // 4. MANEJO DE ERRORES (ÚLTIMA CAPA - CAPTURA EXCEPCIONES)
+    // ===========================================================
     /** @var ContainerInterface $container */
     $container = $app->getContainer();
-
-    // Parse json, form data and xml
-    $app->addBodyParsingMiddleware();
-
-
-    $app->addRoutingMiddleware();
-    // $app->add(BasePathMiddleware::class);
-
-    // Error handler
+    
+    // Configuración desde archivo
     $settings = $container->get(Configuration::class)->getArray('error_handler_middleware');
-    $displayErrorDetails = (bool) $settings['display_error_details'];
-    $logErrors = (bool) $settings['log_errors'];
-    $logErrorDetails = (bool) $settings['log_error_details'];
 
-    $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, $logErrors, $logErrorDetails);
+    // Middleware de errores con 3 parámetros:
+    $errorMiddleware = $app->addErrorMiddleware(
+        $settings['display_error_details'],  // Mostrar detalles en entorno dev
+        $settings['log_errors'],             // Registrar errores
+        $settings['log_error_details']       // Registrar detalles técnicos
+    );
 
+    // Renderizadores personalizados para diferentes formatos
     /** @var ErrorHandler $errorHandler */
     $errorHandler = $errorMiddleware->getDefaultErrorHandler();
     $errorHandler->registerErrorRenderer('text/html', HtmlErrorRenderer::class);

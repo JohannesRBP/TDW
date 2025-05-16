@@ -74,7 +74,7 @@
 
 
   /* LOGIN */
-.login-form {
+.form-login {
   background-color: #fdfcf8; 
   padding: 40px;
   border-radius: 10px;
@@ -85,13 +85,13 @@
   border: 1px solid #d6c8b6;
 }
 
-.login-form h1 {
+.form-login h1 {
   color: #3e2c1c; 
   margin-bottom: 24px;
   font-size: 24px;
 }
 
-.login-form label {
+.form-login label {
   display: block;
   color: #5a4b3c;
   font-weight: bold;
@@ -99,7 +99,7 @@
   text-align: left;
 }
 
-.login-form input {
+.form-login input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -108,13 +108,13 @@
   background-color: #fffefb;
 }
 
-.login-form input:focus {
+.form-login input:focus {
   outline: none;
   border-color: #a3b763; 
   box-shadow: 0 0 5px rgba(163, 183, 99, 0.4);
 }
 
-.login-form button {
+.form-login button {
   margin-top: 20px;
   padding: 12px 24px;
   background-color: #a3b763; 
@@ -126,7 +126,7 @@
   transition: background-color 0.3s ease;
 }
 
-.login-form button:hover {
+.form-login button:hover {
   background-color: #8ea44d;
 }
   /* CONTENIDO PRINCIPAL */
