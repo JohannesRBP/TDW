@@ -14,6 +14,7 @@
     <h1>ANALES DE LA CIENCIA</h1>
     <ul>
       <li><a href="#personajes">Inicio</a></li>
+      <li><a href="#" id="toggle-usuarios">Gestión de Usuarios</a></li>
       <li><button id="logout-btn">Logout</button></li>
     </ul>
   </nav>
@@ -24,6 +25,10 @@
       <button class="boton-crud" onclick="crearEntidad()">Crear Entidad</button>
       <button class="boton-crud" onclick="crearProducto()">Crear Producto</button>
     </div>
+    <div class="gestion-usuarios" id="gestion-usuarios" style="display: none;">
+      <h2>Gestión de Usuarios</h2>
+      <div id="lista-usuarios"></div>
+    </div>
     <div class="objetos">
       <div class="personajes" id="personajes"></div>
       <div class="entidades" id="entidades"></div>
@@ -31,7 +36,7 @@
     </div>
   </main>
 
-  <script type="module" src="/front/app/javascripts/api.js"></script>
-  <script type="module" src="/front/app/javascripts/app.js"></script>
+  <script type="module" src="../../javascripts/api.js"></script>
+  <script type="module" src="../../javascripts/app.js"></script>
 </body>
 </html>

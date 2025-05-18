@@ -89,3 +89,113 @@
   gap: 16px;
   margin: 20px 0;
 }
+/* ================================
+   Panel de Gestión de Usuarios
+================================ */
+
+/* Contenedor principal */
+.gestion-usuarios {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Título */
+.gestion-usuarios h2 {
+  margin-bottom: 16px;
+  font-size: 1.75em;
+  color: #2d3748;
+  text-align: center;
+}
+
+/* Tabla */
+.gestion-usuarios table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-family: inherit;
+}
+
+/* Cabeceras */
+.gestion-usuarios th,
+.gestion-usuarios td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gestion-usuarios thead {
+  background-color: #edf2f7;
+}
+
+.gestion-usuarios th {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+/* Filas alternas */
+.gestion-usuarios tbody tr:nth-child(even) {
+  background-color: #f7fafc;
+}
+
+/* Select de Roles */
+.gestion-usuarios select {
+  padding: 6px 8px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 0.95em;
+  color: #2d3748;
+  transition: border-color 0.2s;
+}
+
+.gestion-usuarios select:focus {
+  outline: none;
+  border-color: #3182ce;
+}
+
+/* Botones de Acción */
+.gestion-usuarios button {
+  padding: 6px 12px;
+  margin-left: 8px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.gestion-usuarios button:hover {
+  opacity: 0.9;
+}
+
+.gestion-usuarios button:active {
+  transform: translateY(1px);
+}
+
+/* Botón Eliminar */
+.gestion-usuarios button:nth-of-type(1) {
+  background-color: #e53e3e;
+  color: #fff;
+}
+
+.gestion-usuarios button:nth-of-type(1):hover {
+  background-color: #c53030;
+}
+
+/* Mensajes de carga o error */
+.gestion-usuarios .loading,
+.gestion-usuarios .error {
+  text-align: center;
+  font-size: 1em;
+  padding: 20px;
+  color: #4a5568;
+}
+
+.gestion-usuarios .error {
+  color: #e53e3e;
+}

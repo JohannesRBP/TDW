@@ -68,47 +68,71 @@ export async function loginAPI(username, password) {
 }
 
 // ================================
-// Endpoints de gestión de usuarios (NO CAMBIADOS)
+// Endpoints de gestión de usuarios
 // ================================
-export const getUsers       = () => apiRequest("/users");
-export const createUser     = (obj) => apiRequest("/users", "POST", obj);
-export const updateUser     = (id, obj) => apiRequest(`/users/${id}`, "PUT", obj);
-export const deleteUser     = (id) => apiRequest(`/users/${id}`, "DELETE");
-export const getUserByName  = (username) => apiRequest(`/users/username/${username}`);
+export const getUsers = () => apiRequest("/users");
+export const createUser = (obj) => apiRequest("/users", "POST", obj);
+export const updateUser = (id, obj) => apiRequest(`/users/${id}`, "PUT", obj);
+export const deleteUser = (id) => apiRequest(`/users/${id}`, "DELETE");
+export const getUserByName = (username) => apiRequest(`/users/username/${username}`);
 
 // ================================
-// Endpoints de gestión de PERSONAS (antes personajes)
+// Endpoints de gestión de PERSONAS
 // ================================
-export const getPersons     = () => apiRequest("/persons");
-export const createPerson   = (obj) => apiRequest("/persons", "POST", obj);
-export const updatePerson   = (id, obj) => apiRequest(`/persons/${id}`, "PUT", obj);
-export const deletePerson   = (id) => apiRequest(`/persons/${id}`, "DELETE");
-export const getPersonByName= (name) => apiRequest(`/persons/personname/${encodeURIComponent(name)}`);
+export const getPersons = async () => {
+  try {
+    return await apiRequest("/persons");
+  } catch (err) {
+    if (err.message.includes("404")) return { persons: [] };
+    throw err;
+  }
+};
+
+export const createPerson = (obj) => apiRequest("/persons", "POST", obj);
+export const updatePerson = (id, obj) => apiRequest(`/persons/${id}`, "PUT", obj);
+export const deletePerson = (id) => apiRequest(`/persons/${id}`, "DELETE");
+export const getPersonByName = (name) => apiRequest(`/persons/personname/${encodeURIComponent(name)}`);
 
 // ================================
-// Endpoints de gestión de ENTIDADES (CORREGIDOS)
+// Endpoints de gestión de ENTIDADES
 // ================================
-export const getEntities    = () => apiRequest("/entities");
-export const createEntity   = (obj) => apiRequest("/entities", "POST", obj);
-export const updateEntity   = (id, obj) => apiRequest(`/entities/${id}`, "PUT", obj);
-export const deleteEntity   = (id) => apiRequest(`/entities/${id}`, "DELETE");
-export const getEntityByName= (name) => apiRequest(`/entities/entityname/${encodeURIComponent(name)}`);
+export const getEntities = async () => {
+  try {
+    return await apiRequest("/entities");
+  } catch (err) {
+    if (err.message.includes("404")) return { entities: [] };
+    throw err;
+  }
+};
+
+export const createEntity = (obj) => apiRequest("/entities", "POST", obj);
+export const updateEntity = (id, obj) => apiRequest(`/entities/${id}`, "PUT", obj);
+export const deleteEntity = (id) => apiRequest(`/entities/${id}`, "DELETE");
+export const getEntityByName = (name) => apiRequest(`/entities/entityname/${encodeURIComponent(name)}`);
 
 // ================================
-// Endpoints de gestión de PRODUCTOS (CORREGIDOS)
+// Endpoints de gestión de PRODUCTOS
 // ================================
-export const getProducts    = () => apiRequest("/products");
-export const createProduct  = (obj) => apiRequest("/products", "POST", obj);
-export const updateProduct  = (id, obj) => apiRequest(`/products/${id}`, "PUT", obj);
-export const deleteProduct  = (id) => apiRequest(`/products/${id}`, "DELETE");
-export const getProductByName= (name) => apiRequest(`/products/productname/${encodeURIComponent(name)}`);
+export const getProducts = async () => {
+  try {
+    return await apiRequest("/products");
+  } catch (err) {
+    if (err.message.includes("404")) return { products: [] };
+    throw err;
+  }
+};
+
+export const createProduct = (obj) => apiRequest("/products", "POST", obj);
+export const updateProduct = (id, obj) => apiRequest(`/products/${id}`, "PUT", obj);
+export const deleteProduct = (id) => apiRequest(`/products/${id}`, "DELETE");
+export const getProductByName = (name) => apiRequest(`/products/productname/${encodeURIComponent(name)}`);
 
 // ================================
-// Limpieza de sesión: cierra sesión (NO CAMBIADO)
+// Limpieza de sesión
 // ================================
 export function logout() {
   // Borrar el token de sessionStorage
   sessionStorage.removeItem("access_token");
-  // Recargar a la página pública (index.html)
-  window.location.href = "index.html";
+  // Recargar a la página pública
+  window.location.href = "/front/app/views/home/index.html";
 }
