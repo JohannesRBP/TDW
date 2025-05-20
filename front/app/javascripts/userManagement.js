@@ -1,11 +1,10 @@
-import { getUsers, updateUser, deleteUser } from './api.js';
+import { getUsers, updateUser, deleteUser, getUserById } from './api.js';
 
 /**
  * Renderiza la tabla de usuarios en #lista-usuarios
  */
 export async function renderizarGestionUsuarios() {
   const contenedor = document.getElementById('lista-usuarios');
-  contenedor.innerHTML = '<div class="loading">Cargando usuarios...</div>';
   try {
     const { users } = await getUsers();
     contenedor.innerHTML = `
@@ -48,13 +47,22 @@ export async function renderizarGestionUsuarios() {
  */
 export async function cambiarRolUsuario(userId, nuevoRol) {
   try {
-    await updateUser(userId, { role: nuevoRol });
+    // 1) Obtener el ETag
+    const { headers } = await getUserById(userId);
+    console.log(headers)
+    const etag = headers.get('etag');
+    console.log(etag)
+    if (!etag) throw new Error('No se recibió ETag');
+
+    // 2) Llamar a updateUser pasando el etag
+    await updateUser(userId, { role: nuevoRol }, etag);
+
+    // 3) Refrescar tabla
     await renderizarGestionUsuarios();
   } catch (err) {
     alert(`Error actualizando rol: ${err.message}`);
   }
 }
-
 /**
  * Elimina un usuario y refresca la tabla
  */

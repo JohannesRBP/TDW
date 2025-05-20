@@ -1,29 +1,47 @@
+// javascripts/profile.js
+
 import { obtenerUsuarioActual } from './utils.js';
-import { updateUser } from './api.js';
+import { getUserById, updateUser } from './api.js';
 
 export function renderizarPerfilUsuario() {
-  const usuario = obtenerUsuarioActual();
-  const contenedor = document.getElementById('formulario-perfil');
-  contenedor.innerHTML = `
-    <form id="form-perfil">
+  const user = obtenerUsuarioActual();
+  const cont = document.getElementById('formulario-perfil');
+  cont.innerHTML = `
+    <form id="perfil-form">
       <label>Username:</label>
-      <input type="text" value="${usuario.username}" readonly>
+      <input type="text" value="${user.username}" readonly>
       <label>Email:</label>
-      <input type="email" id="email" value="${usuario.email}" required>
+      <input type="email" id="email" value="${user.email}" required>
       <label>Nueva Contraseña:</label>
-      <input type="password" id="nueva-password" placeholder="Dejar en blanco para no cambiar">
+      <input type="password" id="password" placeholder="Dejar en blanco para no cambiar">
       <button type="submit">Guardar Cambios</button>
     </form>
   `;
-  document.getElementById('form-perfil').addEventListener('submit', async e => {
+
+  document.getElementById('perfil-form').addEventListener('submit', async e => {
     e.preventDefault();
-    const datosActualizados = { email: e.target.email.value, password: e.target['nueva-password'].value || undefined };
+    const email = e.target.email.value.trim();
+    const pwd   = e.target.password.value || undefined;
+
     try {
-      await updateUser(usuario.id, datosActualizados);
+      // 1) Obtener ETag de la versión actual del recurso
+      const { headers } = await getUserById(user.id);
+      const etag = headers.get('etag');
+      if (!etag) {
+        throw new Error('No se recibió ETag del servidor');
+      }
+
+      // 2) Llamar a updateUser con If-Match
+      await updateUser(user.id,
+        { email, password: pwd },
+        etag
+      );
+
       alert('Perfil actualizado correctamente');
-      location.reload();
-    } catch (error) {
-      alert(`Error actualizando perfil: ${error.message}`);
+      window.location.reload();
+
+    } catch (err) {
+      alert('Error actualizando perfil: ' + err.message);
     }
   });
 }

@@ -35,12 +35,13 @@ return function (App $app) {
             ->withHeader('Access-Control-Allow-Credentials', 'true')
             ->withHeader(
                 'Access-Control-Allow-Headers',
-                'Content-Type, Accept, Origin, Authorization, X-Requested-With'
+                'Content-Type, Accept, Origin, Authorization, X-Requested-With, If-Match'
             )
             ->withHeader(
                 'Access-Control-Allow-Methods',
                 'GET, POST, PUT, PATCH, DELETE, OPTIONS'
-            );
+            )
+            ->withHeader('Access-Control-Expose-Headers', 'ETag');
     });
 
     // ===========================================================

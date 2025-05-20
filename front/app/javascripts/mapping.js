@@ -1,7 +1,8 @@
 import {
   getPersons,
   getEntities,
-  getProducts
+  getProducts,
+  getAssociations
 } from './api.js';
 
 export function mapPersonsApi(resp) {
@@ -40,5 +41,18 @@ export function mapProductsApi(resp) {
     wiki: item.product.wikiUrl,
     personas: item.product.persons,
     entidades: item.product.entities
+  }));
+}
+
+export function mapAsociationsApi(resp) {
+  return resp.associations.map(item => ({
+    id: item.association.id,
+    nombre: item.association.name,
+    nacimiento: item.association.birthDate,
+    muerte: item.association.deathDate,
+    imagen: item.association.imageUrl,
+    wiki: item.association.wikiUrl,
+    personas: item.association.persons,
+    entidades: item.association.entities
   }));
 }
