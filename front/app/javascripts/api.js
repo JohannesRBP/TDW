@@ -117,16 +117,16 @@ export const deleteAssociation     = function(id) { return apiRequest('/associat
 // Relaciones bidireccionales
 export const relacion = {
   products: function(id, tipo, oper, elemId) {
-    return apiRequest('/products/' + id + '/' + tipo + '/' + oper + '/' + elemId, oper);
+    return apiRequest(`/products/${id}/${tipo}/${oper}/${elemId}`, 'PUT');
   },
   persons: function(id, tipo, oper, elemId) {
-    return apiRequest('/persons/' + id + '/' + tipo + '/' + oper + '/' + elemId, oper);
+    return apiRequest(`/persons/${id}/${tipo}/${oper}/${elemId}`, 'PUT');
   },
   entities: function(id, tipo, oper, elemId) {
-    return apiRequest('/entities/' + id + '/' + tipo + '/' + oper + '/' + elemId, oper);
+    return apiRequest(`/entities/${id}/${tipo}/${oper}/${elemId}`, 'PUT');
   },
   associations: function(id, tipo, oper, elemId) {
-    return apiRequest('/associations/' + id + '/' + tipo + '/' + oper + '/' + elemId, oper);
+    return apiRequest(`/associations/${id}/${tipo}/${oper}/${elemId}`, 'PUT');
   }
 };
 

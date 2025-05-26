@@ -18,10 +18,10 @@ return function (App $app) {
         // Obtener origen de la solicitud
         $origin = $request->getHeaderLine('Origin');
         
-        // Determinar origen permitido (sin usar wildcard '*' si hay credenciales)
+        // Determinar origen permitido 
         $allowOrigin = in_array($origin, $allowedOrigins) 
             ? $origin 
-            : $allowedOrigins[0]; // Opción: rechazar peticiones no listadas
+            : $allowedOrigins[0]; 
 
         // Manejar la solicitud y modificar la respuesta
         $response = $handler->handle($request);
