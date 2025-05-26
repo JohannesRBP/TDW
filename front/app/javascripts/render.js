@@ -44,7 +44,7 @@ export function renderizarSeccion(idSeccion, elementos, modo) {
   if (!cont) return;
   cont.innerHTML = '';
 
-  // Agrupar de 3 en 3
+  // Agrupar de 4 en 4
   for (let i = 0; i < elementos.length; i += 3) {
     const grupoDiv = document.createElement('div');
     grupoDiv.className = 'grupo-tarjetas';

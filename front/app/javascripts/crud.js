@@ -20,12 +20,7 @@ import {
 import { cargarDatos, datosGlobales } from './data.js';
 import { renderizarContenido } from './render.js';
 
-/**
- * Actualiza un elemento según su tipo, usando ETag.
- * @param {string} tipo - 'personajes'|'entidades'|'productos'|'asociaciones'
- * @param {number} id
- * @param {object} data - Campos del formulario
- */
+
 export async function actualizarElemento(tipo, id, data) {
   const datos = {
     name: data.nombre,

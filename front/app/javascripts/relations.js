@@ -61,7 +61,7 @@ export function mostrarRelaciones(tipo, id) {
   const selId     = form.querySelector('#elementId');
   const btnCancel = form.querySelector('#btn-cancel');
 
-  // 5) Poblar select de elementos según cambio
+  
   function actualizarOpciones() {
     const lista = datosGlobales[selType.value] || [];
     selId.innerHTML = lista.map(x => `<option value="${x.id}">${x.nombre}</option>`).join('');

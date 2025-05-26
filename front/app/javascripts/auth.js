@@ -38,42 +38,47 @@ export async function mostrarFormularioEmail(username, password) {
 /**
  * Inicializa registro y validación básica de username.
  */
-export async function inicializarRegistro() {
-  const form = document.getElementById('form-login');
-  const usernameInput = document.getElementById('user-name');
-  const pwdInput = document.getElementById('pwd');
 
-  // Validación al teclear username
-  usernameInput.addEventListener('input', async e => {
-    const name = e.target.value.trim();
-    if (!name) return;
-    try {
-      await getUserByName(name);
-      // Usuario ya existe
-      console.warn('El nombre de usuario ya existe');
-    } catch (error) {
-      if (error.message.includes('404')) {
-        // Nombre disponible
-        console.info('Nombre de usuario disponible');
-      }
-    }
-  });
+export async function inicializarRegistro() {
+  const form          = document.getElementById('form-login');
+  const usernameInput = document.getElementById('user-name');
+  const pwdInput      = document.getElementById('pwd');
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const username = usernameInput.value.trim();
     const password = pwdInput.value;
+
+    // 1) Comprobar si existe el usuario
     try {
       await getUserByName(username);
+    } catch (err) {
+      // Si da 404 , usuario NO existe , vamos al formulario de registro
+      if (err.message.includes('404')) {
+        return mostrarFormularioEmail(username, password);
+      }
+      // Otro error inesperado
+      return alert('Error al comprobar usuario: ' + err.message);
+    }
+
+    // 2) El usuario existe, intentamos el login
+    try {
       const data = await loginAPI(username, password);
       await manejarLoginExitoso(data, username);
     } catch (err) {
-      if (err.message.includes('404')) {
-        mostrarFormularioEmail(username, password);
-      } else if (err.message.includes('401')) {
+      const msg = err.message || '';
+
+      if (msg.includes('401')) {
+        // Contraseña incorrecta
         alert('Contraseña incorrecta');
+
+      } else if (msg.includes('400') && msg.includes('invalid_grant')) {
+
+        alert('Error de autenticación: contraseña inválida o caducada.');
+
       } else {
-        alert('Error: ' + err.message);
+        // Cualquier otro error
+        alert('Error al iniciar sesión: ' + msg);
       }
     }
   });

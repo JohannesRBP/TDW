@@ -5,7 +5,7 @@ const JSON_HEADERS = { 'Content-Type': 'application/json' };
 async function apiRequest(path, method = 'GET', data = null, extraHeaders = {}, opts = {}) {
   const token = sessionStorage.getItem('access_token');
 
-  // Construir cabeceras combinando JSON_HEADERS y extraHeaders sin spread
+  // Construir cabeceras combinando JSON_HEADERS y extraHeaders 
   const headers = {};
   // Copiar JSON_HEADERS
   for (const headerName in JSON_HEADERS) {
@@ -47,7 +47,7 @@ async function apiRequest(path, method = 'GET', data = null, extraHeaders = {}, 
 }
 
 /**
- * Autenticación: obtiene el JWT.
+ * Autenticación
  */
 export async function loginAPI(username, password) {
   const datos = { username: username, password: password };
