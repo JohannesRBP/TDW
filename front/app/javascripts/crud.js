@@ -27,7 +27,7 @@ import { renderizarContenido } from './render.js';
  * @param {object} data - Campos del formulario
  */
 export async function actualizarElemento(tipo, id, data) {
-  const payload = {
+  const datos = {
     name: data.nombre,
     birthDate: data.nacimiento,
     deathDate: data.muerte || null,
@@ -37,7 +37,7 @@ export async function actualizarElemento(tipo, id, data) {
 
   if (tipo === 'asociaciones') {
     if (!data.websiteUrl) throw new Error('El campo websiteUrl es obligatorio para asociaciones');
-    payload.websiteUrl = data.websiteUrl;
+    datos.websiteUrl = data.websiteUrl;
   }
 
   let etag;
@@ -46,28 +46,28 @@ export async function actualizarElemento(tipo, id, data) {
       const { headers } = await getPersonById(id);
       etag = headers.get('etag');
       if (!etag) throw new Error('No se recibió ETag');
-      await updatePerson(id, payload, etag);
+      await updatePerson(id, datos, etag);
       break;
     }
     case 'entidades': {
       const { headers } = await getEntityById(id);
       etag = headers.get('etag');
       if (!etag) throw new Error('No se recibió ETag');
-      await updateEntity(id, payload, etag);
+      await updateEntity(id, datos, etag);
       break;
     }
     case 'productos': {
       const { headers } = await getProductById(id);
       etag = headers.get('etag');
       if (!etag) throw new Error('No se recibió ETag');
-      await updateProduct(id, payload, etag);
+      await updateProduct(id, datos, etag);
       break;
     }
     case 'asociaciones': {
       const { headers } = await getAssociationById(id);
       etag = headers.get('etag');
       if (!etag) throw new Error('No se recibió ETag');
-      await updateAssociation(id, payload, etag);
+      await updateAssociation(id, datos, etag);
       break;
     }
   }
@@ -77,7 +77,7 @@ export async function actualizarElemento(tipo, id, data) {
  * Crea un nuevo elemento según su tipo.
  */
 export async function crearElemento(tipo, data) {
-  const payload = {
+  const datos = {
     name: data.nombre,
     birthDate: data.nacimiento,
     deathDate: data.muerte || null,
@@ -87,14 +87,14 @@ export async function crearElemento(tipo, data) {
 
   if (tipo === 'asociaciones') {
     if (!data.websiteUrl) throw new Error('El campo websiteUrl es obligatorio para asociaciones');
-    payload.websiteUrl = data.websiteUrl;
+    datos.websiteUrl = data.websiteUrl;
   }
 
   switch (tipo) {
-    case 'personajes':   await createPerson(payload); break;
-    case 'entidades':    await createEntity(payload); break;
-    case 'productos':    await createProduct(payload); break;
-    case 'asociaciones': await createAssociation(payload); break;
+    case 'personajes':   await createPerson(datos); break;
+    case 'entidades':    await createEntity(datos); break;
+    case 'productos':    await createProduct(datos); break;
+    case 'asociaciones': await createAssociation(datos); break;
   }
 }
 

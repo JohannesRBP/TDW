@@ -50,11 +50,11 @@ async function apiRequest(path, method = 'GET', data = null, extraHeaders = {}, 
  * Autenticación: obtiene el JWT.
  */
 export async function loginAPI(username, password) {
-  const payload = { username: username, password: password };
+  const datos = { username: username, password: password };
   const res = await fetch(RUTA_LOGIN, {
     method: 'POST',
     headers: JSON_HEADERS,
-    body: JSON.stringify(payload)
+    body: JSON.stringify(datos)
   });
   if (!res.ok) {
     const errText = await res.text();
