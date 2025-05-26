@@ -1,6 +1,3 @@
-// api.js
-// Configuración de la comunicación con la API REST
-
 const API_BASE = "http://127.0.0.1:8000/api/v1";
 const RUTA_LOGIN = "http://127.0.0.1:8000/access_token";
 const JSON_HEADERS = { 'Content-Type': 'application/json' };
