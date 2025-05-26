@@ -10,13 +10,18 @@ import {
   deletePerson,
   deleteEntity,
   deleteProduct,
-  deleteAssociation
+  deleteAssociation,
+  getPersonById,
+  getEntityById,
+  getProductById,
+  getAssociationById
 } from './api.js';
+
 import { cargarDatos, datosGlobales } from './data.js';
 import { renderizarContenido } from './render.js';
 
 /**
- * Actualiza un elemento según su tipo.
+ * Actualiza un elemento según su tipo, usando ETag.
  * @param {string} tipo - 'personajes'|'entidades'|'productos'|'asociaciones'
  * @param {number} id
  * @param {object} data - Campos del formulario
@@ -35,11 +40,36 @@ export async function actualizarElemento(tipo, id, data) {
     payload.websiteUrl = data.websiteUrl;
   }
 
+  let etag;
   switch (tipo) {
-    case 'personajes':   await updatePerson(id, payload); break;
-    case 'entidades':    await updateEntity(id, payload); break;
-    case 'productos':    await updateProduct(id, payload); break;
-    case 'asociaciones': await updateAssociation(id, payload); break;
+    case 'personajes': {
+      const { headers } = await getPersonById(id);
+      etag = headers.get('etag');
+      if (!etag) throw new Error('No se recibió ETag');
+      await updatePerson(id, payload, etag);
+      break;
+    }
+    case 'entidades': {
+      const { headers } = await getEntityById(id);
+      etag = headers.get('etag');
+      if (!etag) throw new Error('No se recibió ETag');
+      await updateEntity(id, payload, etag);
+      break;
+    }
+    case 'productos': {
+      const { headers } = await getProductById(id);
+      etag = headers.get('etag');
+      if (!etag) throw new Error('No se recibió ETag');
+      await updateProduct(id, payload, etag);
+      break;
+    }
+    case 'asociaciones': {
+      const { headers } = await getAssociationById(id);
+      etag = headers.get('etag');
+      if (!etag) throw new Error('No se recibió ETag');
+      await updateAssociation(id, payload, etag);
+      break;
+    }
   }
 }
 

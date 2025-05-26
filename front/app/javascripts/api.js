@@ -2,15 +2,6 @@ const API_BASE = "http://127.0.0.1:8000/api/v1";
 const RUTA_LOGIN = "http://127.0.0.1:8000/access_token";
 const JSON_HEADERS = { 'Content-Type': 'application/json' };
 
-/**
- * Petición genérica a la API REST.
- * @param {string} path - Ruta de la API (p.ej. '/users').
- * @param {string} method - Método HTTP ('GET','POST','PUT','DELETE').
- * @param {object|null} data - Payload JSON.
- * @param {object} extraHeaders - Cabeceras adicionales.
- * @param {object} opts - Opciones { raw: boolean }.
- * @returns {Promise<any|null|{body:any,headers:Headers}>}
- */
 async function apiRequest(path, method = 'GET', data = null, extraHeaders = {}, opts = {}) {
   const token = sessionStorage.getItem('access_token');
 
@@ -70,6 +61,7 @@ export async function loginAPI(username, password) {
     throw new Error('Login Error ' + res.status + ': ' + errText);
   }
   return res.json();
+
 }
 
 // Gestión de usuarios
@@ -87,32 +79,58 @@ export const getUserById   = function(id) {
   return apiRequest('/users/' + id, 'GET', null, {}, { raw: true });
 };
 
-// Gestión de entidades de dominio
+// Gestión de entidades 
+
 export const getPersons        = () => apiRequest('/persons');
-export const createPerson     = function(obj) { return apiRequest('/persons', 'POST', obj); };
-export const updatePerson     = function(id, obj) { return apiRequest('/persons/' + id, 'PUT', obj); };
+export const createPerson      = function(obj) { return apiRequest('/persons', 'POST', obj); };
+export const updatePerson      = function(id, obj, etag) {
+  const headers = etag ? { 'If-Match': etag } : {};
+  return apiRequest('/persons/' + id, 'PUT', obj, headers);
+};
+
 export const deletePerson     = function(id) { return apiRequest('/persons/' + id, 'DELETE'); };
 export const getPersonByName  = function(name) {
   return apiRequest('/persons/personname/' + encodeURIComponent(name));
 };
+export const getPersonById = function(id) {
+  return apiRequest('/persons/' + id, 'GET', null, {}, { raw: true });
+};
 
 export const getEntities       = () => apiRequest('/entities');
 export const createEntity      = function(obj) { return apiRequest('/entities', 'POST', obj); };
-export const updateEntity      = function(id, obj) { return apiRequest('/entities/' + id, 'PUT', obj); };
+export const updateEntity = function(id, obj, etag) {
+  const headers = etag ? { 'If-Match': etag } : {};
+  return apiRequest('/entities/' + id, 'PUT', obj, headers);
+};
 export const deleteEntity      = function(id) { return apiRequest('/entities/' + id, 'DELETE'); };
-// export const getEntityByName = function(name) { return apiRequest('/entities/entityname/' + encodeURIComponent(name)); };
+export const getEntityById = function(id) {
+  return apiRequest('/entities/' + id, 'GET', null, {}, { raw: true });
+};
+
 
 export const getProducts       = () => apiRequest('/products');
 export const createProduct     = function(obj) { return apiRequest('/products', 'POST', obj); };
-export const updateProduct     = function(id, obj) { return apiRequest('/products/' + id, 'PUT', obj); };
+export const updateProduct = function(id, obj, etag) {
+  const headers = etag ? { 'If-Match': etag } : {};
+  return apiRequest('/products/' + id, 'PUT', obj, headers);
+};
 export const deleteProduct     = function(id) { return apiRequest('/products/' + id, 'DELETE'); };
-// export const getProductByName = function(name) { return apiRequest('/products/productname/' + encodeURIComponent(name)); };
+export const getProductById = function(id) {
+  return apiRequest('/products/' + id, 'GET', null, {}, { raw: true });
+};
+
 
 export const getAssociations       = () => apiRequest('/associations');
 export const createAssociation     = function(obj) { return apiRequest('/associations', 'POST', obj); };
-export const updateAssociation     = function(id, obj) { return apiRequest('/associations/' + id, 'PUT', obj); };
+export const updateAssociation = function(id, obj, etag) {
+  const headers = etag ? { 'If-Match': etag } : {};
+  return apiRequest('/associations/' + id, 'PUT', obj, headers);
+};
 export const deleteAssociation     = function(id) { return apiRequest('/associations/' + id, 'DELETE'); };
-// export const getAssociationByName = function(name) { return apiRequest('/associations/asociationname/' + encodeURIComponent(name)); };
+export const getAssociationById = function(id) {
+  return apiRequest('/associations/' + id, 'GET', null, {}, { raw: true });
+};
+
 
 // Relaciones bidireccionales
 export const relacion = {

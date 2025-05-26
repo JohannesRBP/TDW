@@ -1,18 +1,7 @@
-// relations.js
 import { datosGlobales, cargarDatos } from './data.js';
 import { renderizarContenido }        from './render.js';
 import { relacion }                   from './api.js';
 
-/**
- * Modal para editar relaciones bidireccionales según sección:
- * - personajes ↔ entities, products
- * - entidades  ↔ entities, persons
- * - productos  ↔ entities, persons
- * - asociaciones ↔ entities
- *
- * @param {'personajes'|'entidades'|'productos'|'asociaciones'} tipo
- * @param {number} id
- */
 export function mostrarRelaciones(tipo, id) {
   // 1) Mapear 'tipo' al método correcto de relacion
   const apiKeyMap = {
@@ -103,7 +92,7 @@ export function mostrarRelaciones(tipo, id) {
   });
 }
 
-/** Cierra el modal actual */
+/** Cierra el modal */
 export function cerrarFormulario() {
   document.querySelector('.modal-formulario')?.remove();
 }

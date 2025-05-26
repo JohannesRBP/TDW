@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/front/app/assets/stylesheets/home.css">
   <link rel="stylesheet" href="/front/app/assets/stylesheets/personajes.css">
   <link rel="stylesheet" href="/front/app/assets/stylesheets/writer.css">
+  <link rel="stylesheet" href="/front/app/assets/stylesheets/profile.css">
 </head>
 <body>
 
@@ -15,6 +16,7 @@
     <ul>
       <li><a href="#personajes">Inicio</a></li>
       <li><a href="#gestion-usuarios">Gestión de Usuarios</a></li>
+      <li><a href="#mi-perfil">Mi Perfil</a></li>
       <li><button id="logout-btn">Logout</button></li>
     </ul>
   </nav>
@@ -31,6 +33,11 @@
       <h2>Gestión de Usuarios</h2>
       <div id="lista-usuarios"></div>
     </section>
+
+    <div class="mi-perfil" id="mi-perfil" style="display: none;">
+      <h2>Mi Perfil</h2>
+      <div id="formulario-perfil"></div>
+    </div>
 
     <div class="objetos">
       <div class="personajes"    id="personajes"></div>
