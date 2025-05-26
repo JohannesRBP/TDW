@@ -1,5 +1,3 @@
-// javascripts/profile.js
-
 import { obtenerUsuarioActual } from './utils.js';
 import { getUserById, updateUser } from './api.js';
 

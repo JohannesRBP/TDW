@@ -1,6 +1,8 @@
-import { obtenerRutaActual } from './utils.js';
+// render.js
+import { obtenerRutaActual }      from './utils.js';
 import { renderizarPerfilUsuario } from './profile.js';
 import { renderizarGestionUsuarios } from './userManagement.js';
+import { datosGlobales } from './data.js';
 
 export function renderizarContenido(datosGlobales) {
   const rutaActual = obtenerRutaActual();
@@ -8,7 +10,7 @@ export function renderizarContenido(datosGlobales) {
   if (rutaActual.includes('reader.html')) modo = 'reader';
   if (rutaActual.includes('writer.html')) modo = 'writer';
 
-  // Gestión de Usuarios
+  // Gestión de usuarios
   const seccionUsuarios = document.getElementById('gestion-usuarios');
   if (seccionUsuarios) {
     if (modo === 'writer' && window.location.hash === '#gestion-usuarios') {
@@ -19,7 +21,7 @@ export function renderizarContenido(datosGlobales) {
     }
   }
 
-  // Mostrar sección de Mi Perfil
+  // Mi perfil
   const perfilPanel = document.getElementById('mi-perfil');
   if (perfilPanel) {
     if (modo === 'reader' && window.location.hash === '#mi-perfil') {
@@ -30,30 +32,26 @@ export function renderizarContenido(datosGlobales) {
     }
   }
 
-  // Renderizado de tarjetas: personajes, entidades, productos y asociaciones
-  renderizarSeccion('personajes', datosGlobales.persons, modo);
-  renderizarSeccion('entidades', datosGlobales.entities, modo);
-  renderizarSeccion('productos', datosGlobales.products, modo);
+  // Tarjetas
+  renderizarSeccion('personajes',   datosGlobales.persons,      modo);
+  renderizarSeccion('entidades',    datosGlobales.entities,    modo);
+  renderizarSeccion('productos',    datosGlobales.products,    modo);
   renderizarSeccion('asociaciones', datosGlobales.asociaciones, modo);
 }
 
 export function renderizarSeccion(idSeccion, elementos, modo) {
-  const contenedor = document.getElementById(idSeccion);
-  if (!contenedor) return;
-  contenedor.innerHTML = '';
+  const cont = document.getElementById(idSeccion);
+  if (!cont) return;
+  cont.innerHTML = '';
 
-  const grupos = [];
+  // Agrupar de 3 en 3
   for (let i = 0; i < elementos.length; i += 3) {
-    grupos.push(elementos.slice(i, i + 3));
-  }
-
-  grupos.forEach(grupo => {
     const grupoDiv = document.createElement('div');
     grupoDiv.className = 'grupo-tarjetas';
 
-    grupo.forEach(elem => {
+    elementos.slice(i, i + 3).forEach(elem => {
       const tarjeta = document.createElement('div');
-      tarjeta.classList.add('card');
+      tarjeta.className = 'card';
 
       let html = `
         <h3>${elem.nombre}</h3>
@@ -61,35 +59,46 @@ export function renderizarSeccion(idSeccion, elementos, modo) {
       `;
 
       if (modo === 'reader' || modo === 'writer') {
-        // Campos comunes a todas las secciones con fecha y lista
-        if (['productos','asociaciones'].includes(idSeccion)) {
-          html += `
-            <p><strong>Creación:</strong> ${elem.nacimiento}</p>
-            <p><strong>Estado:</strong> ${elem.muerte || 'Activo'}</p>
-            <p><strong>Entidades:</strong> ${elem.entidades?.join(', ') || 'Ninguna'}</p>
-            <p><strong>Personas:</strong> ${elem.personas?.join(', ') || 'Ninguna'}</p>
-          `;
-        } else if (idSeccion === 'personajes') {
-          html += `
-            <p><strong>Nacimiento:</strong> ${elem.nacimiento}</p>
-            <p><strong>Muerte:</strong> ${elem.muerte || 'N/A'}</p>
-          `;
-        } else if (idSeccion === 'entidades') {
-          html += `
-            <p><strong>Fundación:</strong> ${elem.nacimiento}</p>
-            <p><strong>Disolución:</strong> ${elem.muerte || 'Activa'}</p>
-            <p><strong>Participantes:</strong> ${elem.personas?.join(', ') || 'Ninguno'}</p>
-          `;
+        // Datos básicos
+        switch (idSeccion) {
+          case 'personajes':
+            html += `<p><strong>Nacimiento:</strong> ${elem.nacimiento}</p><p><strong>Muerte:</strong> ${elem.muerte||'N/A'}</p>`;
+            break;
+          case 'entidades':
+            html += `<p><strong>Fundación:</strong> ${elem.nacimiento}</p><p><strong>Disolución:</strong> ${elem.muerte||'Activa'}</p>`;
+            break;
+          case 'productos':
+          case 'asociaciones':
+            html += `<p><strong>Creación:</strong> ${elem.nacimiento}</p><p><strong>Estado:</strong> ${elem.muerte||'Activo'}</p>`;
+            break;
+        }
+
+        // Relaciones directas (bidireccional implícita)
+        if (elem.personas?.length) {
+          const personas = datosGlobales.persons.filter(p=>elem.personas.includes(p.id)).map(p=>p.nombre);
+          html += `<p><strong>Personas relacionadas:</strong> ${personas.join(', ')}</p>`;
+        }
+        if (elem.entidades?.length) {
+          const entidades = datosGlobales.entities.filter(e=>elem.entidades.includes(e.id)).map(e=>e.nombre);
+          html += `<p><strong>Entidades relacionadas:</strong> ${entidades.join(', ')}</p>`;
+        }
+
+        // Relaciones inversas específicas para entidades
+        if (idSeccion === 'entidades') {
+          const productosInv = datosGlobales.products.filter(p=>p.entidades?.includes(elem.id)).map(p=>p.nombre);
+          if (productosInv.length) html += `<p><strong>Productos relacionados:</strong> ${productosInv.join(', ')}</p>`;
+          const asociacionesInv = datosGlobales.asociaciones.filter(a=>a.entidades?.includes(elem.id)).map(a=>a.nombre);
+          if (asociacionesInv.length) html += `<p><strong>Asociaciones relacionadas:</strong> ${asociacionesInv.join(', ')}</p>`;
         }
 
         html += `<a href="${elem.wiki}" target="_blank">Saber más</a>`;
 
-        // Botones de CRUD solo en writer
         if (modo === 'writer') {
           html += `
             <div class="acciones">
               <button class="boton-eliminar" onclick="handleDelete('${idSeccion}', ${elem.id})">Eliminar</button>
-              <button class="boton-editar" onclick="mostrarFormularioEditar('${idSeccion}', ${elem.id})">Editar</button>
+              <button class="boton-editar"  onclick="mostrarFormularioEditar('${idSeccion}', ${elem.id})">Editar</button>
+              <button class="boton-relaciones" onclick="mostrarRelaciones('${idSeccion}', ${elem.id})">Relaciones</button>
             </div>
           `;
         }
@@ -99,6 +108,6 @@ export function renderizarSeccion(idSeccion, elementos, modo) {
       grupoDiv.appendChild(tarjeta);
     });
 
-    contenedor.appendChild(grupoDiv);
-  });
+    cont.appendChild(grupoDiv);
+  }
 }

@@ -1,9 +1,4 @@
-import {
-  getPersons,
-  getEntities,
-  getProducts,
-  getAssociations
-} from './api.js';
+// Funciones para transformar la respuesta de la API al formato de datos globales
 
 export function mapPersonsApi(resp) {
   return resp.persons.map(item => ({

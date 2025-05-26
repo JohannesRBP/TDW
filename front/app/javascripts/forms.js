@@ -1,103 +1,114 @@
-import { getPersons, getEntities, getProducts, getAssociations, relacion } from './api.js';
-import { cargarDatos, datosGlobales } from './data.js';
+import { getPersons, getEntities, getProducts } from './api.js';
+import { cargarDatos } from './data.js';
 import { renderizarContenido } from './render.js';
 import { actualizarElemento, crearElemento } from './crud.js';
 
-async function cargarOpciones() {
-  return datosGlobales;
+const singularMap = {
+  personajes: 'personaje',
+  entidades: 'entidad',
+  productos: 'producto',
+  asociaciones: 'asociación'
+};
+
+export function mostrarFormularioCrear(tipo) {
+  mostrarFormulario(tipo, null);
 }
 
 export async function mostrarFormularioEditar(seccion, id) {
-  const opts = await cargarOpciones();
-  const elem = await fetchElemento(seccion, id);
-  mostrarFormulario(seccion, elem, opts);
+  let elem;
+  switch (seccion) {
+    case 'personajes':
+      elem = (await getPersons()).persons.find(p => p.person.id === id).person;
+      break;
+    case 'entidades':
+      elem = (await getEntities()).entities.find(e => e.entity.id === id).entity;
+      break;
+    case 'productos':
+      elem = (await getProducts()).products.find(p => p.product.id === id).product;
+      break;
+  }
+  mostrarFormulario(seccion, elem);
 }
 
-export function mostrarFormularioCrear(seccion) {
-  mostrarFormulario(seccion, null, datosGlobales);
-}
-
-function mostrarFormulario(seccion, existente, opts) {
+function mostrarFormulario(tipo, elemExistente) {
   const container = document.createElement('div');
+  container.id = 'contenedor-formulario';
   container.className = 'modal-formulario';
-  const editar = Boolean(existente);
-  const cab = editar ? 'Editar' : 'Crear';
+  const esEdicion = Boolean(elemExistente);
+  const entidad = singularMap[tipo] || tipo.slice(0, -1);
 
-  container.innerHTML = `
-    <h3>${cab} ${seccion.slice(0,-1)}</h3>
-    <form id="form-${seccion}">
+  const labels = {
+    nacimiento: tipo === 'entidades' ? 'Fundación' : tipo === 'productos' ? 'Creación' : 'Nacimiento',
+    muerte: tipo === 'entidades' ? 'Disolución' : tipo === 'productos' ? 'Estado' : 'Muerte'
+  };
+
+  let html = `
+    <h3>${esEdicion ? 'Editar ' : 'Crear '} ${entidad.charAt(0).toUpperCase() + entidad.slice(1)}</h3>
+    <form id="form-${tipo}">
       <label>Nombre:</label>
-      <input type="text" name="nombre" value="${existente?.name||''}" required>
-      <label>Fecha:</label>
-      <input type="date" name="nacimiento" value="${existente?.birthDate||''}" required>
-      <label>Estado/Muerte:</label>
-      <input type="date" name="muerte" value="${existente?.deathDate||''}">
-      <label>Imagen (URL):</label>
-      <input type="url" name="imagen" value="${existente?.imageUrl||''}">
-      <label>Wiki (URL):</label>
-      <input type="url" name="wiki" value="${existente?.wikiUrl||''}">
-      <label>Personas (nombres separados por comas):</label>
-      <input type="text" name="personas" value="${editar? existente.personas.map(id=> opts.persons.find(p=>p.id===id)?.nombre).join(', '): ''}" placeholder="Ej: Einstein, Curie">
-      <label>Entidades (nombres separados por comas):</label>
-      <input type="text" name="entidades" value="${editar? existente.entities.map(id=> opts.entities.find(e=>e.id===id)?.nombre).join(', '): ''}" placeholder="Ej: NASA, CERN">
-      ${seccion==='productos'?`<label>Asociaciones (nombres separados por comas):</label>
-      <input type="text" name="asociaciones" value="${editar? existente.associations.map(id=> opts.asociaciones.find(a=>a.id===id)?.nombre).join(', '): ''}" placeholder="Ej: IEEE">`: ''}
-      <button type="submit">${editar?'Guardar':'Crear'}</button>
+      <input type="text" id="nombre" value="${elemExistente?.name || ''}" required>
+      <label>${labels.nacimiento}:</label>
+      <input type="date" id="nacimiento" value="${elemExistente?.birthDate || ''}" required>
+      <label>${labels.muerte}:</label>
+      <input type="date" id="muerte" value="${elemExistente?.deathDate || ''}">
+      <label>URL Imagen:</label>
+      <input type="url" id="imagen" value="${elemExistente?.imageUrl || ''}">
+      <label>URL Wiki:</label>
+      <input type="url" id="wiki" value="${elemExistente?.wikiUrl || ''}">
+  `;
+
+  if (tipo === 'asociaciones') {
+    html += `
+      <label>URL Sitio Web:</label>
+      <input type="url" id="website" value="${elemExistente?.websiteUrl || ''}" required>
+    `;
+  }
+
+  html += `
+      <button type="submit">${esEdicion ? 'Guardar' : 'Crear'}</button>
       <button type="button" onclick="cerrarFormulario()">Cancelar</button>
     </form>
   `;
 
+  container.innerHTML = html;
   document.body.appendChild(container);
-  document.getElementById(`form-${seccion}`).addEventListener('submit', async e => {
-    e.preventDefault();
-    const form = e.target;
-    const nombresToIds = (text, lista) => text
-      .split(',')
-      .map(s=> s.trim())
-      .filter(Boolean)
-      .map(name => {
-        const found = lista.find(x => x.nombre.toLowerCase() === name.toLowerCase());
-        if (!found) throw new Error(`No existe ${name} en ${lista === datosGlobales.persons? 'personas' : 'entidades'}`);
-        return found.id;
-      });
 
-    const datos = {
-      nombre: form.nombre.value,
-      nacimiento: form.nacimiento.value,
-      muerte: form.muerte.value,
-      imagen:  form.imagen.value,
-      wiki:    form.wiki.value,
-      personas: nombresToIds(form.personas.value, datosGlobales.persons),
-      entidades: nombresToIds(form.entidades.value, datosGlobales.entities),
-      asociaciones: seccion==='productos'
-        ? nombresToIds(form.asociaciones.value, datosGlobales.asociaciones)
-        : undefined
+  document.getElementById(`form-${tipo}`).addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const data = {
+      nombre: document.getElementById('nombre').value.trim(),
+      nacimiento: document.getElementById('nacimiento').value,
+      muerte: document.getElementById('muerte').value,
+      imagen: document.getElementById('imagen').value.trim(),
+      wiki: document.getElementById('wiki').value.trim()
     };
 
+    if (tipo === 'asociaciones') {
+      const site = document.getElementById('website').value.trim();
+      if (!site) {
+        alert('El campo URL Sitio Web es obligatorio para asociaciones.');
+        return;
+      }
+      data.websiteUrl = site;
+    }
+
     try {
-      if (editar) {
-        await actualizarElemento(seccion, existente.id, datos);
+      if (esEdicion) {
+        await actualizarElemento(tipo, elemExistente.id, data);
       } else {
-        await crearElemento(seccion, datos);
+        await crearElemento(tipo, data);
       }
       await cargarDatos();
-      renderizarContenido(datosGlobales);
+      renderizarContenido();
       cerrarFormulario();
-    } catch(err) {
+    } catch (err) {
       alert('Error: ' + err.message);
     }
   });
 }
 
-async function fetchElemento(seccion, id) {
-  switch(seccion) {
-    case 'personajes': return (await getPersons()).persons.find(p=>p.person.id===id).person;
-    case 'entidades': return (await getEntities()).entities.find(e=>e.entity.id===id).entity;
-    case 'productos': return (await getProducts()).products.find(p=>p.product.id===id).product;
-    case 'asociaciones': return (await getAssociations()).associations.find(a=>a.association.id===id).association;
-  }
-}
-
 export function cerrarFormulario() {
-  document.querySelector('.modal-formulario')?.remove();
+  const cont = document.getElementById('contenedor-formulario');
+  if (cont) cont.remove();
 }

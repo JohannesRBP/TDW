@@ -1,0 +1,61 @@
+#formulario-perfil {
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+
+#perfil-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+#perfil-form label {
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 4px;
+}
+
+
+#perfil-form input[type="text"],
+#perfil-form input[type="email"],
+#perfil-form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#perfil-form input:focus {
+  outline: none;
+  border-color: #a3b763;
+  box-shadow: 0 0 4px rgba(163,183,99,0.4);
+}
+
+
+#perfil-form button[type="submit"] {
+  align-self: flex-end;
+  padding: 10px 24px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#perfil-form button[type="submit"]:hover {
+  background-color: #0055aa;
+}
+#mi-perfil{
+ text-align: center;
+}

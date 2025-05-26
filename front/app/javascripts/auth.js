@@ -6,6 +6,9 @@ import {
   getUsers
 } from './api.js';
 
+/**
+ * Muestra formulario de registro solicitando email.
+ */
 export async function mostrarFormularioEmail(username, password) {
   const sec = document.getElementById('form-login');
   sec.innerHTML = `
@@ -32,18 +35,26 @@ export async function mostrarFormularioEmail(username, password) {
   });
 }
 
+/**
+ * Inicializa registro y validación básica de username.
+ */
 export async function inicializarRegistro() {
   const form = document.getElementById('form-login');
   const usernameInput = document.getElementById('user-name');
   const pwdInput = document.getElementById('pwd');
 
+  // Validación al teclear username
   usernameInput.addEventListener('input', async e => {
+    const name = e.target.value.trim();
+    if (!name) return;
     try {
-      await getUserByName(e.target.value.trim());
-      mostrarErrorRegistro('El nombre de usuario ya existe');
+      await getUserByName(name);
+      // Usuario ya existe
+      console.warn('El nombre de usuario ya existe');
     } catch (error) {
       if (error.message.includes('404')) {
-        limpiarErrorRegistro();
+        // Nombre disponible
+        console.info('Nombre de usuario disponible');
       }
     }
   });
@@ -68,6 +79,9 @@ export async function inicializarRegistro() {
   });
 }
 
+/**
+ * Maneja login exitoso: guarda token y redirige según rol.
+ */
 export async function manejarLoginExitoso(data, username) {
   sessionStorage.setItem('access_token', data.access_token);
   sessionStorage.setItem('username', username);
@@ -76,13 +90,17 @@ export async function manejarLoginExitoso(data, username) {
   const userObj = usersResp.users.find(u => u.user.username === username);
   sessionStorage.setItem('user', JSON.stringify(userObj.user));
 
-  if (userObj.user.role.toLowerCase() === 'reader') {
+  const role = userObj.user.role.toLowerCase();
+  if (role === 'reader') {
     window.location.href = '/front/app/views/personas/reader.html';
   } else {
     window.location.href = '/front/app/views/personas/writer.html';
   }
 }
 
+/**
+ * Inicializa el botón de logout.
+ */
 export function inicializarLogout() {
   const botonLogout = document.getElementById('logout-btn');
   if (botonLogout) {

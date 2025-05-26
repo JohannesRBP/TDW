@@ -1,66 +1,64 @@
 import './api.js';
 import { inicializarRegistro, inicializarLogout } from './auth.js';
-import { renderizarContenido } from './render.js';
-import { renderizarPerfilUsuario } from './profile.js';
+import { renderizarContenido }    from './render.js';
 import './userManagement.js';
-import { mostrarFormularioCrear, mostrarFormularioEditar, cerrarFormulario } from './forms.js';
-import { handleDelete } from './crud.js';
+import {
+  mostrarFormularioCrear,
+  mostrarFormularioEditar,
+  cerrarFormulario
+} from './forms.js';
+import { handleDelete }            from './crud.js';
 import { cargarDatos, datosGlobales } from './data.js';
+import { renderizarPerfilUsuario } from './profile.js';
+import { mostrarRelaciones, cerrarFormulario as cerrarRelaciones } from './relations.js';
 
 async function inicializarApp() {
   await cargarDatos();
   configurarAuth();
   exponerFuncionesGlobales();
-  manejarRutas();                           
+  manejarRutas();
   window.addEventListener('hashchange', manejarRutas);
 }
 
 function configurarAuth() {
   const token = sessionStorage.getItem('access_token');
-  if (token) inicializarLogout();
-  else inicializarRegistro();
+  token ? inicializarLogout() : inicializarRegistro();
 }
 
 function exponerFuncionesGlobales() {
-  window.crearPersonaje          = () => mostrarFormularioCrear('personajes');
-  window.crearEntidad            = () => mostrarFormularioCrear('entidades');
-  window.crearProducto           = () => mostrarFormularioCrear('productos');
-  window.crearAsociacion         = () => mostrarFormularioCrear('asociaciones');
+  window.crearPersonaje  = () => mostrarFormularioCrear('personajes');
+  window.crearEntidad    = () => mostrarFormularioCrear('entidades');
+  window.crearProducto   = () => mostrarFormularioCrear('productos');
+  window.crearAsociacion = () => mostrarFormularioCrear('asociaciones');
 
   window.mostrarFormularioEditar = mostrarFormularioEditar;
   window.cerrarFormulario        = cerrarFormulario;
   window.handleDelete            = handleDelete;
+  window.mostrarRelaciones       = mostrarRelaciones;
+  window.cerrarRelaciones        = cerrarRelaciones;
 }
 
 function manejarRutas() {
-  const hash       = window.location.hash;
-  const perfilSec  = document.getElementById('mi-perfil');
-  const gestSec    = document.getElementById('gestion-usuarios');
-  const objetosSec = document.querySelector('.objetos');
+  const hash = window.location.hash;
+  const perfil = document.getElementById('mi-perfil');
+  const gest   = document.getElementById('gestion-usuarios');
+  const objs   = document.querySelector('.objetos');
 
-  // Mostrar Mi Perfil
-  if (hash === '#mi-perfil' && perfilSec) {
-    perfilSec.style.display  = 'block';
-    if (objetosSec) objetosSec.style.display = 'none';
+  if (hash === '#mi-perfil' && perfil) {
+    perfil.style.display = 'block';
+    objs && (objs.style.display = 'none');
     renderizarPerfilUsuario();
     return;
   }
-
-  // Mostrar Gestión de Usuarios
-  if (hash === '#gestion-usuarios' && gestSec) {
-    gestSec.style.display    = 'block';
-    if (objetosSec) objetosSec.style.display = 'none';
-    if (typeof window.renderizarGestionUsuarios === 'function') {
-      window.renderizarGestionUsuarios();
-    }
+  if (hash === '#gestion-usuarios' && gest) {
+    gest.style.display = 'block';
+    objs && (objs.style.display = 'none');
+    window.renderizarGestionUsuarios();
     return;
   }
-
-  // Por defecto, ocultar extras y mostrar tarjetas
-  if (perfilSec)  perfilSec.style.display  = 'none';
-  if (gestSec)    gestSec.style.display    = 'none';
-  if (objetosSec) objetosSec.style.display = 'flex';
-
+  perfil && (perfil.style.display = 'none');
+  gest   && (gest.style.display = 'none');
+  objs   && (objs.style.display = 'flex');
   renderizarContenido(datosGlobales);
 }
 

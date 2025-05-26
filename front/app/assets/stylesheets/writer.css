@@ -199,3 +199,14 @@
 .gestion-usuarios .error {
   color: #e53e3e;
 }
+
+.boton-relaciones{
+  padding: 5px 15px;
+  background-color: #c9ae1a;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
