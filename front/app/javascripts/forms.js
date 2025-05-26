@@ -1,5 +1,5 @@
 import { getPersons, getEntities, getProducts } from './api.js';
-import { cargarDatos } from './data.js';
+import { cargarDatos, datosGlobales } from './data.js';
 import { renderizarContenido } from './render.js';
 import { actualizarElemento, crearElemento } from './crud.js';
 
@@ -100,7 +100,7 @@ function mostrarFormulario(tipo, elemExistente) {
         await crearElemento(tipo, data);
       }
       await cargarDatos();
-      renderizarContenido();
+      renderizarContenido(datosGlobales);
       cerrarFormulario();
     } catch (err) {
       alert('Error: ' + err.message);
